@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="prostyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/icons8-laptop-96.png">
+    <title>Mesa Verde Laptop Store</title>
+    
+</head>
+<body>
+
+<header>
+    <div id="headbar" >
+       MESA VERDE
+       <div class="search-container" style="visibility: hidden;">
+        <form action="javascript:search()" class="search-container">
+            <input size="20" type="text" placeholder="Search.." name="search" id="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+    </div>
+       <a href="/shopcart" title="سبد خرید" id="cartshop" style="text-decoration: none;"> &#128722</a>
+       <a title="حساب کاربری" id="log" href="/signup" target="_self" class="unlog">ورود/عضویت👤</a>
+       
+    </div>
+     
+     <div class="topnav" id="myTopnav">
+    <a href="/" class="active">صفحه اصلی</a>
+    <a href="/?no" >لپ تاپ نو</a>
+    <a href="/?hand"  >لپ تاپ دست دوم</a>
+    <a href="/?stock" >لپ تاپ استوک</a>
+    <a href="javascript:void(0);" class="icon" onclick="resp()" >
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</header>
+<h1 id="title"></h1>
+<div id="main">
+<div id="table" >
+<table>
+    <tr>
+        <th>CPU</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>RAM</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>STORAGE</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>SCREEN</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>WEIGHT</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>BRAND</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>GRAPHIC</th>
+        <td></td>
+    </tr>
+    
+    <tr>
+        <th>PRICE</th>
+        <td></td>
+    </tr>
+    <tr>
+      <th>STATUS</th>
+      <td></td>
+    </tr>
+</table>
+</div>
+
+<div id="imgbt">
+<img id="images">
+
+</div>
+</div>
+
+
+
+  <a href="" id="button">اضافه به سبد خرید &#128722</a>
+
+
+
+
+<footer class="footer" id="foot">
+<h2 style="margin: 10px 0px;">مشاوره خرید و ارتباط با ما بصورت ۲۴ ساعته همه روز هفته</h2>
+<div class="contact-info">
+  <p>
+    <strong>Phone:</strong><wbr> +98901-580-8929
+  </p>
+  <p>
+    <strong>Email Address:</strong><wbr> mahdigorzedin@gmail.com
+  </p>
+</div>
+<div class="social-media">
+  <a href="#"><i class="fa fa-youtube"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-instagram"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+</div>
+</footer>
+
+<script src="/front-js1.js"></script>
+    <script>
+        fetch('http://localhost:5000/gson').then(res=>res.json()).then(res=>{
+            document.getElementById('title').textContent= res.fullname;
+            let arr = [res.cpu,res.ram,res.storage,res.screen,res.weight,res.brand,
+        res.graphic,res.price,res.status];
+            for(let i=0;i<=8;i++){
+                document.getElementsByTagName('td')[i].textContent=arr[i];
+            }
+            let anchor =document.getElementById('button')
+            anchor.setAttribute('href' , `/products/?id=${res.id}`)
+              anchor.onclick=function(event){
+               var req = new XMLHttpRequest();
+              req.open('post', `/cart/?id=${res.id}`, true);
+              req.send(null);
+             }
+            })
+            var request = new XMLHttpRequest();
+            request.open('GET', `/proimg`, true);
+            request.send(null);
+            fetch('http://localhost:5000/proimg').then(res=>res.blob()).then(res=>{
+                let image =document.getElementById('images');
+                let url = URL.createObjectURL(res)
+                image.src=url
+            })
+
+            function hand1(){
+  document.addEventListener("DOMContentLoaded", function(){
+    alert('hey')
+});
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let username = getCookie("name");
+  if (username != "") {
+    document.getElementById('log').textContent=username
+    document.getElementById('log').removeAttribute("href")
+    document.getElementById('log').classList.add('logged')
+    document.getElementById('log').classList.remove('unlog')
+  }
+}
+checkCookie()
+  
+    </script>
+    
+</body>
+</html>

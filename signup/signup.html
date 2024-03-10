@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signupcss.css">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/icons8-laptop-96.png">
+</head>
+<body>
+  <div class="container">
+    <h2>ساخت حساب کاربری</h2>
+    <form action="/create" method="post" >
+      <input type="text" placeholder="نام و نام خانوادگی" required name="fullname">
+      <input type="email" placeholder="آدرس ایمیل" required name="email">
+      <input type="tel" placeholder="شماره تلفن" required name="number" >
+      <input type="password" placeholder="رمز ورود" required name="password">
+      <input type="submit" value="Sign Up">
+    </form>
+    <p class="message">قبلا اکانت ساخته اید ؟ <a href="/signin/">ورود به حساب کاربری</a></p>
+  </div>
+
+  <script>
+   let form = document.forms[0];
+   form.onsubmit= function(){
+    event.preventDefault();
+    let email = form.children[1];
+    let phone = form.children[2];
+    if(!email.value.includes('gmail.com')){
+      email.classList.add('invalid');
+      alert('لطفا ایمیل را بدرستی وارد کنید')
+    }
+    if( !typeof +phone.value =="number" || !phone.value.startsWith('09')){
+      phone.classList.add('invalid');
+      alert('لطفا تلفن را بدرستی وارد کنید')
+    }
+    form.submit();
+   }
+
+  </script>
+</body>
+</html>

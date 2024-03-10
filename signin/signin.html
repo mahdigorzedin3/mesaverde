@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+  <link rel="stylesheet" href="signin.css">
+  <link rel="icon" type="image/x-icon" href="/icons8-laptop-96.png">
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="container">
+    <h2>ورود به حساب کاربری</h2>
+    <form method="post" action="/login">
+      <input type="text" placeholder="آدرس ایمیل" required name="email">
+      <input type="password" placeholder="رمز ورود" required name="password">
+      <input type="submit" value="Sign In">
+    </form>
+    <p class="message">اکانت ندارید ؟<a href="/signup/">ساخت حساب کاربری</a></p>
+  </div>
+  <script>
+    let form = document.forms[0];
+    form.onsubmit= function(){
+     event.preventDefault();
+     let email = form.children[0];
+     let phone = form.children[1];
+     if(!email.value.includes('gmail.com')){
+       email.classList.add('invalid');
+       alert('لطفا ایمیل را بدرستی وارد کنید')
+     }
+      form.submit()
+    }
+    fetch('/signip/nonauth').then(res=>res.json()).then(res=>{
+      alert(res)
+    })
+   </script>
+</body>
+</html>

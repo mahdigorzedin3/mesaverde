@@ -1,0 +1,90 @@
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url('giphy.gif');
+      }
+      
+      .container {
+        max-width: 37%;
+        height: 450px;
+        margin: 0 auto;
+        padding: 30px;
+        padding-right: 40px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+      
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+    
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ccc;
+        background-color: #f4f4f4;
+        transition: border-bottom-color 0.3s ease;
+        text-align: right;
+      }
+      
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus {
+        border-bottom-color: #8e44ad;
+      }
+      
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #8e44ad;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #6c3483;
+      }
+      
+      .message {
+        text-align: center;
+        color: #888;
+        margin-top: 20px;
+      }
+      
+      .message a {
+        color: #8e44ad;
+        text-decoration: none;
+      }
+      
+      .terms {
+        margin-top: 20px;
+      }
+      
+      .terms label {
+        display: block;
+        font-size: 12px;
+        color: #888;
+      }
+      
+      .terms input[type="checkbox"] {
+        margin-right: 5px;
+      }
+
+      .invalid { background-color: red; }

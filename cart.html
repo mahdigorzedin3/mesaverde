@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart</title>
+  <link rel="icon" type="image/x-icon" href="icons8-laptop-96.png">
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url('signup/giphy.gif');
+      }
+      
+
+    h1 {
+      text-align: center;
+    }
+
+    .cart-container {
+        width: 55%;
+        height: auto;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    }
+
+    .cart-item {
+      display: none;
+    }
+    .cartt-item{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cart-item img {
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+    .remove-button {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #da1d1d;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .cart-item h4 {
+      margin: 0;
+    }
+
+    .cart-item p {
+      margin: 0;
+      color: #888;
+    }
+
+    .cart-item-price {
+      font-weight: bold;
+    }
+
+    .total-price {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .total-price p {
+      margin: 0;
+      font-weight: bold;
+      margin: 15px;
+    }
+
+    .checkout-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      background-color: #af4c4c;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+      position: relative;
+      right: 1%;
+    }
+
+    .checkout-button:hover {
+      background-color: #a04545;
+    }
+    .imegz{
+      max-width: 100px;
+      height: auto;
+      margin-right: 5px;
+    }
+
+    @media screen and (max-width: 500px) {
+        .cart-container {
+        width: 70%;
+
+    }
+  }
+
+  </style>
+</head>
+<body>
+   
+  <div class="cart-container" id="colesh">
+    
+  <h1 id="title1">Shopping Cart</h1>
+  
+
+    <h1 id="ekhtar" style="margin: 100px 0px;">
+        !محصولی در سبد خرید وجود ندارد
+    </h1>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="cart-item">
+      <img src="" alt="Product 1" class="imegz">
+      <div class="cart-item-details">
+        <h4>Product 1</h4>
+        <p>قیمت: </p>
+      </div>
+      <a href="" class="remove-button">Remove</a>
+    </div>
+    <div class="total-price" id="totalprice">
+      قیمت کل :
+    </div>
+
+    <a id="demo" class="checkout-button">تکمیل فرایند خرید</a>
+  </div>
+
+
+  <script type="module" src="cartscript.js"></script>
+</body>
+</html>
