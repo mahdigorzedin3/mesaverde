@@ -34,12 +34,12 @@ app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({  
   extended: true
 })); 
-
+    app.use(express.static(path.resolve(__dirname,'public')))
 
 
 app.get('/' ,(req,res)=>{
-    app.use(express.static('/home/mahdi-gorzedin/Desktop/project'));
-    res.sendFile(path.resolve(__dirname,'shop.html'))
+
+    res.sendFile(path.resolve(__dirname,'public','shop.html'))
 })
 const secret = 'thisshouldbeasecret';
 
@@ -77,14 +77,12 @@ app.get('/signip/nonauth',(req,res)=>{
 })
 
 app.get('/signup/', (req,res)=>{
-    app.use(express.static('/home/mahdi-gorzedin/Desktop/project/signup'))
     res.setHeader("content-type" , mimetype)
-    res.status(200).sendFile('/home/mahdi-gorzedin/Desktop/project/signup/signup.html')
+    res.status(200).sendFile(path.resolve(__dirname,'public','signup','signup.html'))
 } )
 app.get('/signin/', (req,res)=>{
-    app.use(express.static('/home/mahdi-gorzedin/Desktop/project/signin'))
     res.setHeader("content-type" , mimetype)
-    res.status(200).sendFile('/home/mahdi-gorzedin/Desktop/project/signin/signin.html')
+    res.status(200).sendFile(path.resolve(__dirname,'public','signin','signin.html'))
 } )
 
 
@@ -117,8 +115,7 @@ app.get('/products/',(req,res)=>{
         if(err) console.log(err);
         })
     res.setHeader("content-type" , mimetype)
-    app.use(express.static('/home/mahdi-gorzedin/Desktop/project/pro'))
-    res.sendFile(path.resolve(__dirname,'products/pro.html'),function(err){
+    res.sendFile(path.resolve(__dirname,'public','products/pro.html'),function(err){
         if(err) console.log(err);
     })
 })
@@ -176,6 +173,6 @@ app.post('/cartimg', (req,res)=>{
 
 
 app.get('/shopcart',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'cart.html'))
+    res.sendFile(path.resolve(__dirname,'public','cart.html'))
 })
 app.listen(5000)
