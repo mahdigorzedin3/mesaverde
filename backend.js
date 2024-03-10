@@ -8,7 +8,9 @@ const mysql =require('mysql2')
 const url = require('url')
 const jwt = require('jsonwebtoken')
 var bodyParser = require('body-parser');
+var env = require('dotenv')
 
+env.config()
 
 app.use(cookieparser())
 app.use(session({
@@ -24,10 +26,10 @@ const mimetype={
     "json" : "application/json"
 }
 var con = mysql.createPool({
-    host:"localhost",
-    user:"root",
-    password:"27031861",
-    database:"mesaverde"
+    host:process.env.MYSQL_HOST,
+    user:process.env.MYSQL_USER,
+    password:process.env.MYSQL_PASSWORD,
+    database:process.env.MYSQL_DATABASE
 })
 
 app.use( bodyParser.json() );  
