@@ -7,7 +7,7 @@ const path = require('path');
 const mysql =require('mysql2')
 const url = require('url')
 const jwt = require('jsonwebtoken')
-
+var bodyParser = require('body-parser');
 
 
 app.use(cookieparser())
@@ -29,9 +29,7 @@ var con = mysql.createPool({
     password:"27031861",
     database:"mesaverde"
 })
-var bodyParser = require('body-parser');
-const { error } = require('console');
-const { isAscii } = require('buffer');
+
 app.use( bodyParser.json() );  
 app.use(bodyParser.urlencoded({  
   extended: true
