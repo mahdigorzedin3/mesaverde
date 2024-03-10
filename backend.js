@@ -9,8 +9,11 @@ const url = require('url')
 const jwt = require('jsonwebtoken')
 var bodyParser = require('body-parser');
 var env = require('dotenv')
+const cors = require('cors');
 
 env.config()
+
+app.use(cors());
 
 app.use(cookieparser())
 app.use(session({

@@ -1,4 +1,4 @@
-fetch('http://localhost:5000/cartshop',{
+fetch('https://mesaverde.ir/cartshop',{
       method:'POST'
     }).then(res=>res.json())
     .then(res=>{
