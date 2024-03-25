@@ -26,10 +26,7 @@
         color: #333;
       }
     
-      input[type="text"],
-      input[type="password"],
-      input[type="email"],
-      input[type="tel"] {
+.formelement {
         width: 100%;
         padding: 10px;
         margin-bottom: 20px;
@@ -87,4 +84,11 @@
         margin-right: 5px;
       }
 
-      .invalid { background-color: red; }
+      .invalid {background-color: red;
+        border: 2px solid red;}
+
+@media  screen and (max-width: 500px){
+  .container{
+    min-width: 70%;
+  }
+}

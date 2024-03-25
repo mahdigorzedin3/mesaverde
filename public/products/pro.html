@@ -112,13 +112,14 @@
 
 <script src="/front-js1.js"></script>
     <script>
-        fetch('https://mesaverde.ir/gson').then(res=>res.json()).then(res=>{
+        fetch('http://localhost:5000/gson').then(res=>res.json()).then(res=>{
             document.getElementById('title').textContent= res.fullname;
             let arr = [res.cpu,res.ram,res.storage,res.screen,res.weight,res.brand,
         res.graphic,res.price,res.status];
             for(let i=0;i<=8;i++){
                 document.getElementsByTagName('td')[i].textContent=arr[i];
             }
+            document.getElementById('images').src=`/image/${res.id}.jpg`
             let anchor =document.getElementById('button')
             anchor.setAttribute('href' , `/products/?id=${res.id}`)
               anchor.onclick=function(event){
@@ -127,15 +128,6 @@
               req.send(null);
              }
             })
-            var request = new XMLHttpRequest();
-            request.open('GET', `/proimg`, true);
-            request.send(null);
-            fetch('https://mesaverde.ir/proimg').then(res=>res.blob()).then(res=>{
-                let image =document.getElementById('images');
-                let url = URL.createObjectURL(res)
-                image.src=url
-            })
-
             function hand1(){
   document.addEventListener("DOMContentLoaded", function(){
     alert('hey')

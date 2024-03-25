@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model customersinfo {
+  fullname String @db.VarChar(250)
+  email    String @unique(map: "email") @db.VarChar(250)
+  number   String @db.VarChar(11)
+  password String @db.VarChar(8)
+}
+
+model products {
+  fullname String @db.VarChar(255)
+  cpu      String @db.VarChar(255)
+  ram      String @db.VarChar(255)
+  storage  String @db.VarChar(255)
+  screen   String @db.VarChar(255)
+  weight   String @db.VarChar(2555)
+  brand    String @db.VarChar(255)
+  graphic  String @db.VarChar(255)
+  price    String @db.VarChar(255)
+  status   String @db.VarChar(255)
+  id       Int    @id
+}

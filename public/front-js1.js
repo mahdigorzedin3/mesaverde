@@ -49,9 +49,6 @@ function resp() {
     }
     anchor[2].classList.add('active');
     footerstay()
-    
-
-    
   }
 
   function stock(){

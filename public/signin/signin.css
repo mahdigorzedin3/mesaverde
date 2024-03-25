@@ -67,3 +67,8 @@
       color: #8e44ad;
       text-decoration: none;
     }
+    @media  screen and (max-width: 500px){
+      .container{
+        min-width: 70%;
+      }
+    }
