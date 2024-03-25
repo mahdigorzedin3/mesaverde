@@ -7,7 +7,7 @@ import * as jwt from 'jsonwebtoken'
 import * as bodyParser from 'body-parser';
 import * as dotenv from "dotenv";
 import * as cors from 'cors'
-import { PrismaClient } from './meti-prisma/node_modules/@prisma/client'
+import { PrismaClient } from '/meti-prisma/node_modules/@prisma/client'
 const app = express()
 const prisma = new PrismaClient()
 app.use(cookieParser())

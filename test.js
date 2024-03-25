@@ -45,7 +45,7 @@ var jwt = require("jsonwebtoken");
 var bodyParser = require("body-parser");
 var dotenv = require("dotenv");
 var cors = require("cors");
-var client_1 = require("./meti-prisma/node_modules/@prisma/client");
+var client_1 = require("/meti-prisma/node_modules/@prisma/client");
 var app = express();
 var prisma = new client_1.PrismaClient();
 app.use(cookieParser());
