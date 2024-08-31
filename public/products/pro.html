@@ -112,7 +112,7 @@
 
 <script src="/front-js1.js"></script>
     <script>
-        fetch('http://localhost:5000/gson').then(res=>res.json()).then(res=>{
+        fetch('https://mesaverde.ir/gson').then(res=>res.json()).then(res=>{
             document.getElementById('title').textContent= res.fullname;
             let arr = [res.cpu,res.ram,res.storage,res.screen,res.weight,res.brand,
         res.graphic,res.price,res.status];

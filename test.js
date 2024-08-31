@@ -45,7 +45,7 @@ var jwt = require("jsonwebtoken");
 var bodyParser = require("body-parser");
 var dotenv = require("dotenv");
 var cors = require("cors");
-var client_1 = require("/meti-prisma/node_modules/@prisma/client");
+var client_1 = require("./meti-prisma/node_modules/@prisma/client");
 var app = express();
 var prisma = new client_1.PrismaClient();
 app.use(cookieParser());
@@ -119,20 +119,22 @@ app.post('/create', function (req, res) { return __awaiter(void 0, void 0, void 
         switch (_b.label) {
             case 0:
                 _a = req.body, fullname = _a.fullname, email = _a.email, number = _a.number, password = _a.password;
-                return [4 /*yield*/, prisma.customersinfo.findUnique({
+                console.log(email);
+                return [4 /*yield*/, prisma.customersinfo.findFirst({
                         where: {
                             email: email
                         }
                     })];
             case 1:
                 registe = _b.sent();
-                if (!(registe === null || registe === void 0 ? void 0 : registe.email)) return [3 /*break*/, 2];
+                if (!(registe === null || registe === void 0 ? void 0 : registe.fullname)) return [3 /*break*/, 2];
                 req.session.doublemail = true;
                 req.session.save();
                 res.redirect('/signup/');
                 return [3 /*break*/, 4];
             case 2:
                 req.session.doublemail = false;
+                req.session.save();
                 return [4 /*yield*/, prisma.customersinfo.create({
                         data: {
                             fullname: fullname,

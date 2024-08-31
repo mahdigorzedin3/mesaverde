@@ -84,7 +84,7 @@
         margin-right: 5px;
       }
 
-      .invalid {background-color: red;
+      .invalid {
         border: 2px solid red;}
 
 @media  screen and (max-width: 500px){

@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    script: './backend.js',
+    script: './test.js',
     watch: '.'
   }]
 }

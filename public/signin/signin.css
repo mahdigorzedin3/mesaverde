@@ -67,6 +67,8 @@
       color: #8e44ad;
       text-decoration: none;
     }
+	      .invalid {
+        border: 2px solid red;}
     @media  screen and (max-width: 500px){
       .container{
         min-width: 70%;

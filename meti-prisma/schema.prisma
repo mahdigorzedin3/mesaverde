@@ -25,6 +25,7 @@ model products {
   brand    String @db.VarChar(255)
   graphic  String @db.VarChar(255)
   price    String @db.VarChar(255)
+  image    Bytes
   status   String @db.VarChar(255)
   id       Int    @id
 }

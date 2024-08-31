@@ -7,7 +7,7 @@ import * as jwt from 'jsonwebtoken'
 import * as bodyParser from 'body-parser';
 import * as dotenv from "dotenv";
 import * as cors from 'cors'
-import { PrismaClient } from '/meti-prisma/node_modules/@prisma/client'
+import { PrismaClient } from './meti-prisma/node_modules/@prisma/client'
 const app = express()
 const prisma = new PrismaClient()
 app.use(cookieParser())
@@ -94,17 +94,19 @@ app.get('/signin/', (req,res)=>{
 
 app.post('/create',async (req,res)=>{
     const {fullname,email,number,password} =req.body
-    var registe= await prisma.customersinfo.findUnique({
+	console.log(email)
+    var registe= await prisma.customersinfo.findFirst({
         where:{
             email:email
         }
     })
-    if(registe?.email){
+    if(registe?.fullname){
         req.session.doublemail=true
         req.session.save()
         res.redirect('/signup/')
     }else{
         req.session.doublemail=false
+	req.session.save()
         const putuser=await prisma.customersinfo.create({
             data:{
                 fullname:fullname,
@@ -188,8 +190,9 @@ app.post('/cart/remove',(req,res)=>{
     
 
 })
-
 app.get('/shopcart',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'public','cart.html'))
 })
 app.listen(5000)
+
+
