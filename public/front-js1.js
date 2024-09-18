@@ -152,10 +152,10 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  let username = getCookie("name");
+  let username = getCookie("jwt");
   if (username != "") {
-    document.getElementById('log').textContent=username
-    document.getElementById('log').removeAttribute("href")
+    document.getElementById('log').textContent='حساب کاربری👤'
+    document.getElementById('log').href='/user-info'
     document.getElementById('log').classList.add('logged')
     document.getElementById('log').classList.remove('unlog')
   }
