@@ -14,7 +14,7 @@ app.use(cookieParser())
 dotenv.config()
 app.use(cors());
 app.use(session({
-  secret:'dksj933iueddowd',
+  secret:'dksj933iueddowdhuih',
   resave:true,
   saveUninitialized:true,
   name:'yourin'
@@ -61,13 +61,12 @@ const user={
     })
 
     if (user?.fullname) {
-      const token = jwt.sign({ userId: user.number}, secret,{
-        expiresIn: '1h',
+      const token = jwt.sign({ number: user.number , email : user.email , fullname :user.fullname , password : user.password }, 'mypublicprojectkey',{
+        expiresIn: '2h',
         });
         req.session.errauth=false
         req.session.save()
         res.cookie('jwt',token, { httpOnly: true, secure: true, maxAge: 3600000 })
-        res.cookie('name',user.fullname,{ httpOnly: false, secure: true, maxAge: 3600000 })
         res.redirect('/')
     } else {
         req.session.errauth=true
@@ -82,6 +81,21 @@ app.get('/signip/nonauth',(req,res)=>{
         req.session.save()
         res.json('ایمیل یا رمز ورود شما اشتباه است !')
     }
+})
+
+app.get('/usr/data',(req,res)=>{
+	jwt.verify(req.cookie.jwt, 'mypublicprojectkey', (err, authorizedData) => {
+            if(err){
+                console.log('توکن شما نامعتبر است !');
+                res.sendStatus(403);
+            } else {
+                //If token is successfully verified, we can send the autorized data 
+                res.json({
+                    message: 'Successful log in',
+                    authorizedData
+                });
+            }
+        })
 })
 
 app.get('/signup/', (req,res)=>{
@@ -115,11 +129,10 @@ app.post('/create',async (req,res)=>{
                 password:password
             }
         })
-        const token = jwt.sign({ userId: number}, secret,{
-        expiresIn: '1h',
+	const token = jwt.sign({ number: user.number , email : user.email , fullname :user.fullname , password : user.password }, 'mypublicprojectkey',{
+        expiresIn: '2h',
         });
         res.cookie('jwt',token, { httpOnly: true, secure: true, maxAge: 3600000 })
-        res.cookie('name', fullname,{ httpOnly: false, secure: true, maxAge: 3600000 })
         res.redirect('/')
 }})
     
