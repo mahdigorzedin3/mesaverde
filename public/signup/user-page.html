@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signupcss.css">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/icons8-laptop-96.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container" id="div">
+    <h2>ساخت حساب کاربری</h2>
+    <form action="/logout" method="post" id="create">
+      <input type="text" required name="fullname" class="formelement" disabled>
+      <input type="email" required name="email"class="formelement" disabled>
+      <input type="tel" required name="number" class="formelement" disabled>
+      <input type="password" required name="password" class="formelement" disabled>
+      <input type="submit" value="Log out">
+    </form>
+  </div>
+
+  <script>
+   fetch('https://mesaverde.ir/usr/data').then(res=>res.json()).then(res=>{
+    console.log(res)
+    if(res.message=='Successful log in'){
+      document.getElementsByName('fullname')[0].value=res.fullname
+      document.getElementsByName('email')[0].value=res.email
+      document.getElementsByName('number')[0].value=res.number
+      document.getElementsByName('password')[0].value=res.password
+    }else{
+      alert('اشکال در احراز هویت !')
+    }
+   })
+  </script>
+</body>
+</html>
