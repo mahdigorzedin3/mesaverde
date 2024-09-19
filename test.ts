@@ -84,12 +84,11 @@ app.get('/signip/nonauth',(req,res)=>{
 })
 
 app.get('/usr/data',(req,res)=>{
-	jwt.verify(req.cookie.jwt, 'mypublicprojectkey', (err, authorizedData) => {
+	jwt.verify(req.cookies.jwt, 'mypublicprojectkey', (err, authorizedData) => {
             if(err){
                 console.log('توکن شما نامعتبر است !');
                 res.sendStatus(403);
             } else {
-                //If token is successfully verified, we can send the autorized data 
                 res.json({
                     message: 'Successful log in',
                     authorizedData
@@ -101,10 +100,17 @@ app.get('/usr/data',(req,res)=>{
 app.get('/signup/', (req,res)=>{
     res.status(200).sendFile(path.resolve(__dirname,'public','signup','signup.html'))
 } )
+app.get('/user/page', (req,res)=>{
+    res.status(200).sendFile(path.resolve(__dirname,'public','signup','user-page.html'))
+} )
 app.get('/signin/', (req,res)=>{
     res.status(200).sendFile(path.resolve(__dirname,'public','signin','signin.html'))
 } )
 
+app.post('/logout', (req,res)=>{
+  res.clearCookie('jwt');
+  res.redirect('/');
+}})
 
 app.post('/create',async (req,res)=>{
     const {fullname,email,number,password} =req.body
